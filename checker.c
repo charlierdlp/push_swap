@@ -6,11 +6,16 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:20:57 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/05/19 13:28:58 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/05/20 19:57:55 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void    rm_lst(void *node)
+{
+    free(node);
+}
 
 int main(int argc, char **argv)
 {
@@ -20,18 +25,27 @@ int main(int argc, char **argv)
     t_stack a;
     t_stack b;
 
-    i = 0;
+    i = 1;
     a.head = NULL;
     if (argc > 1)
     {
-        while (argv[i])
+        while (argv[i]) // lo de las comillas de alvrodri
         {
-            *num = ft_atoi(argv[i]);
+            num = malloc(sizeof(int));
+            num[0] = ft_atoi(argv[i]);
             node = ft_lstnew(num);
-            ft_lstadd_back(&a.head, num);
+            ft_lstadd_back(&a.head, node);
             i++;
         }
-        t_list *lst = a.head;
+
+    t_list *lst = a.head;
+    while (lst)
+    {
+        printf("%d\n", *((int *)lst->content));
+        lst = lst->next;
+    } 
+
+    ft_lstclear(&a.head, &rm_lst);
     }
     return (0);
 }
