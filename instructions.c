@@ -10,4 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.c"
+#include "push_swap.h"
+
+void swap(t_stack *stack)
+{
+    t_list *tmp;
+
+    if (stack->head->next != NULL)
+    {
+        tmp = stack->head->content;
+        stack = stack->head->next;
+        stack->head->next = tmp;
+    }
+}

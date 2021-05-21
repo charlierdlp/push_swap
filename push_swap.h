@@ -22,4 +22,6 @@ typedef struct s_stack
     t_list *head;
 }              t_stack;
 
+void swap(t_stack *stack);
+
 #endif
