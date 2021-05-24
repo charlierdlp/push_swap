@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 19:52:37 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/05/20 19:53:17 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/05/24 17:16:15 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void swap(t_stack *stack)
     if (stack->head->next != NULL)
     {
         tmp = stack->head->content;
-        stack = stack->head->next;
+        stack->head->content = stack->head->next;
         stack->head->next = tmp;
     }
 }

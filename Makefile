@@ -1,4 +1,5 @@
-SRCS	= checker.c
+GNL		= gnl/get_next_line.c
+SRCS	= ${GNL} checker.c instructions.c
 OBJS	= ${SRCS:.c=.o}
 NAME	= checker
 CC		= gcc

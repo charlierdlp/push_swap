@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:20:57 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/05/20 19:57:55 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:30:07 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int main(int argc, char **argv)
             ft_lstadd_back(&a.head, node);
             i++;
         }
-
     t_list *lst = a.head;
     while (lst)
     {
