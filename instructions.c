@@ -14,12 +14,13 @@
 
 void swap(t_stack *stack)
 {
-    t_list *tmp;
+    void *tmp;
 
     if (stack->head->next != NULL)
     {
+        printf("works\n");
         tmp = stack->head->content;
-        stack->head->content = stack->head->next;
-        stack->head->next = tmp;
+        stack->head->content = stack->head->next->content;
+        stack->head->next->content = tmp;
     }
 }
