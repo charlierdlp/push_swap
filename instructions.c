@@ -26,11 +26,14 @@ void swap(t_stack *stack)
 
 void push(t_stack *a, t_stack *b)
 {
-    if (b->head->content != NULL)
+    if (b->head)
     {
+        t_list *tmp;
+
     printf("hola\n");
-        b->head->next = a->head;
-        a->head = b->head; 
+        tmp = b->head;
+        tmp->next = a->head;
+        a->head = tmp;
     }
 }
 
