@@ -64,6 +64,22 @@ int check_instruction(char *line, t_stack *a, t_stack *b)
     return (0);
 }
 
+int parse_args(char *arg)
+{
+    int i;
+
+    i = 0;
+        if (ft_strchr(arg, ' '))
+        {
+            if (ft_strchr(arg, '-'))
+                return (1);
+            if (!ft_isdigit(arg[i]))
+                return (1);
+        }
+        i++;
+    return (0);
+}
+
 int main(int argc, char **argv)
 {
     int i;
@@ -83,22 +99,19 @@ int main(int argc, char **argv)
     {
         while (argv[i]) // lo de las comillas de alvrodri
         {
+            if (parse_args(argv[i]))
+                return (1);
             num = malloc(sizeof(int));
             num[0] = ft_atoi(argv[i]);
             node = ft_lstnew(num);
             ft_lstadd_back(&a.head, node);
             i++;
         }
-    t_list *lst = a.head;
-    while (lst)
-    {
-        printf("%d\n", *((int *)lst->content));
-        lst = lst->next;
     }
-    }
-    while (get_next_line(0, &line) >= 0 && r)
+    while (get_next_line(0, &line) > 0 && r)
     {
        r = check_instruction(line, &a, &b);
+       free(line);
     }
    t_list *lst = a.head;
     while (lst)

@@ -30,7 +30,6 @@ void push(t_stack *a, t_stack *b)
     {
         t_list *tmp;
 
-    printf("hola\n");
         tmp = b->head;
         tmp->next = a->head;
         a->head = tmp;
