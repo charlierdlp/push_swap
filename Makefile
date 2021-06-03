@@ -1,5 +1,5 @@
 GNL		= gnl/get_next_line.c
-SRCS	= ${GNL} checker.c instructions.c
+SRCS	= ${GNL} instructions.c push_swap.c utils.c
 OBJS	= ${SRCS:.c=.o}
 NAME	= checker
 CC		= gcc

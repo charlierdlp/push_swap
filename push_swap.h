@@ -21,8 +21,11 @@
 typedef struct s_stack
 {
     t_list *head;
+    int     size;
 }              t_stack;
 
+void rm_lst(void *node);
+void free_args(char **args);
 void swap(t_stack *stack);
 void push(t_stack *a, t_stack *b);
 void rotate(t_stack *a);
