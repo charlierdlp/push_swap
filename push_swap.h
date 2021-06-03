@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:16:21 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/05/11 13:31:23 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/06/03 20:33:10 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
     int     size;
 }              t_stack;
 
+int     stack_biggest(t_stack *a);
 void rm_lst(void *node);
 void free_args(char **args);
 void swap(t_stack *stack);

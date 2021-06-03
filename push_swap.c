@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 20:17:06 by cruiz-de          #+#    #+#             */
+/*   Updated: 2021/06/03 20:32:54 by cruiz-de         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	fill_stack(char *args, t_stack *a)
@@ -26,6 +38,7 @@ int parse_args(char *argv, t_stack *a)
 		if ((args[i][j] == '-' && ft_isdigit(args[i][j + 1])) || ft_isdigit(args[i][j]))
 		{
 			fill_stack(args[i], a);
+			printf("num:%d\n", stack_biggest(a));
 			j++;
 		}
 		else
@@ -52,7 +65,6 @@ int main(int argc, char **argv)
 	a.size = 1;
     if (argc > 1)
     {
-		if (argc == 2)
 		while (argv[i])
 		{
             if (parse_args(argv[i], &a))
