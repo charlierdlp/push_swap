@@ -12,30 +12,6 @@
 
 #include "push_swap.h"
 
-int    is_sorted(t_stack *a)
-{
-    t_list  *lst;
-    int     prev;
-
-    if (a->head)
-    {
-        prev = (int)a->head->content;
-        lst = a->head->next;
-        while (lst)
-        {
-            if (prev > (int)lst->content)
-            {
-                write(1, "KO\n", 3);
-                return (1);
-            }
-            prev = (int)lst->content;
-            lst = lst->next;
-        }
-        write(1, "OK\n", 3);
-    }
-    return (0);
-}
-
 int check_instruction(char *line, t_stack *a, t_stack *b)
 {
     if (!ft_strcmp(line, "sa"))

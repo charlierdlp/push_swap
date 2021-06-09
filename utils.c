@@ -38,3 +38,27 @@ int     stack_biggest(t_stack *a)
     }
     return (pos);
 }
+
+int    is_sorted(t_stack *a)
+{
+    t_list  *lst;
+    int     *prev;
+
+    if (a->head)
+    {
+        prev = a->head->content;
+        lst = a->head->next;
+        while (lst)
+        {
+            if (*((int *)prev) > *((int *)lst->content))
+            {
+                //write(1, "KO\n", 3);
+                return (0);
+            }
+            prev = lst->content;
+            lst = lst->next;
+        }
+       // write(1, "OK\n", 3);
+    }
+    return (1);
+}
