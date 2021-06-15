@@ -26,13 +26,16 @@ void swap(t_stack *stack)
 
 void push(t_stack *a, t_stack *b)
 {
-    if (b->head)
+    if (a->size > 0)
     {
         t_list *tmp;
 
-        tmp = b->head;
-        tmp->next = a->head;
-        a->head = tmp;
+        tmp = a->head;
+        a->head = tmp->next;
+        tmp->next = b->head;
+        b->head = tmp;
+        b->size++;
+        a->size--;
     }
 }
 

@@ -39,6 +39,27 @@ int     stack_biggest(t_stack *a)
     return (pos);
 }
 
+int     stack_smallest(t_stack *a)
+{
+    int small;
+    int pos;
+    t_list *lst;
+
+    pos = 1;
+    lst = a->head;
+    small = *((int *)lst->content);
+    while (lst)
+    {
+        if (*((int *)lst->content) < small)
+        {
+            small = *((int *)lst->content);
+            pos++;
+        }
+        lst = lst->next;
+    }
+    return (pos);
+}
+
 int    is_sorted(t_stack *a)
 {
     t_list  *lst;

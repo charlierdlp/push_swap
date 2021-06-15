@@ -54,29 +54,54 @@ int parse_args(char *argv, t_stack *a)
 
 void sort_three(t_stack *a)
 {
-	int option;
+	int big;
+	int small;
 
-	option = stack_biggest(a);
+	big = stack_biggest(a);
+	small = stack_smallest(a);
 
-	if (option == 1)
+
+	if (big == 1 && small == 2)
+	{
+		rotate(a);
+		write(1, "ra\n", 4);
+	}
+	else if (big == 1 && small == 3)
 	{
 		swap(a);
 		rev_rotate(a);
 		write(1, "sa\nrra\n", 8);
 	}
-	else if (option == 2)
+	else if (big == 2 && small == 1)
 	{
 		swap(a);
 		rotate(a);
 		write(1, "sa\nra\n", 7);
 	}
-	else if (option == 3)
+	else if (big == 2 && small == 3)
 	{
-		
+		rev_rotate(a);
+		write(1, "rra\n", 5);
+	}
+	else
+	{
+		swap(a);
+		write(1, "sa\n", 4);
 	}
 }
 
-void check_case(t_stack *a)
+void sort_five(t_stack *a, t_stack *b)
+{
+	while (a->size > 3)
+	{
+		push(a, b);
+		write(1, "pa\n", 4);
+	}
+	if (!is_sorted(a))
+		sort_three(a);
+}
+
+void check_case(t_stack *a, t_stack *b)
 {
 	if (!is_sorted(a))
 	{
@@ -87,6 +112,8 @@ void check_case(t_stack *a)
 		}
 		else if (a->size == 3)
 			sort_three(a);
+		else if (a->size >= 4 && a->size <= 6)
+			sort_five(a, b);
 	}
 }
 
@@ -100,6 +127,7 @@ int main(int argc, char **argv)
     a.head = NULL;
     b.head = NULL;
 	a.size = 0;
+	b.size = 0;
     if (argc > 1)
     {
 		while (argv[i])
@@ -108,14 +136,22 @@ int main(int argc, char **argv)
                 return (1);
 			i++;
 		}
-		check_case(&a);
+		check_case(&a, &b);
     }
 	   t_list *lst = a.head;
     while (lst)
     {
-        printf("%d\n", *((int *)lst->content));
+        printf("a:%d\n", *((int *)lst->content));
         lst = lst->next;
     }
+		   t_list *lst2 = b.head;
+    while (lst2)
+    {
+        printf("b:%d\n", *((int *)lst2->content));
+        lst2 = lst2->next;
+    }
     ft_lstclear(&a.head, &rm_lst);
+    ft_lstclear(&b.head, &rm_lst);
+
 	return (0);
 }
