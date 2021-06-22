@@ -84,21 +84,24 @@ void sort_three(t_stack *a)
 		write(1, "rra\n", 5);
 	}
 	else
-	{
-		swap(a);
-		write(1, "sa\n", 4);
-	}
+    {
+        swap(a);
+        printf("sa\n");
+    }
 }
 
 void sort_five(t_stack *a, t_stack *b)
 {
 	while (a->size > 3)
-	{
-		push(a, b);
-		write(1, "pa\n", 4);
-	}
+		write_push(a, b, "pa");
 	if (!is_sorted(a))
 		sort_three(a);
+	if (stack_biggest(b) == 1)
+	{
+		write_push(a, b, "pb");
+		write_rotate(a, b, "ra");
+	}
+	write_push(a, b, "pb");
 }
 
 void check_case(t_stack *a, t_stack *b)

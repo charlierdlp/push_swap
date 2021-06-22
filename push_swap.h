@@ -26,6 +26,10 @@ typedef struct s_stack
 
 int     stack_biggest(t_stack *a);
 int     stack_smallest(t_stack *a);
+void write_swap(t_stack *a, t_stack *b, char *str);
+void write_push(t_stack *a, t_stack *b, char *str);
+void write_rotate(t_stack *a, t_stack *b, char *str);
+void write_rev_rot(t_stack *a, t_stack *b, char *str);
 void rm_lst(void *node);
 void free_args(char **args);
 void swap(t_stack *stack);
