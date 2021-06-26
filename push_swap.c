@@ -31,24 +31,32 @@ int parse_args(char *argv, t_stack *a)
 	char **args;
 
 	i = 0;
-	args = ft_split(argv, ' ');
-	while (args[i])
-	{
-		j = 0;
-		if ((args[i][j] == '-' && ft_isdigit(args[i][j + 1])) || ft_isdigit(args[i][j]))
+	if (ft_strchr(argv, ' '))
+	{	
+		args = ft_split(argv, ' ');
+		while (args[i])
 		{
-			fill_stack(args[i], a);
-			j++;
-		}
-		else
-		{
-			printf("Error\n");
+			j = 0;
+			if ((args[i][j] == '-' && ft_isdigit(args[i][j + 1])) || ft_isdigit(args[i][j]))
+			{
+				fill_stack(args[i], a);
+				j++;
+			}
+			else
+			{
+				printf("Error\n");
+				free_args(args);
+				return (1);
+			}
 			free_args(args);
-			return (1);
+			i++;
 		}
-		free_args(args);
-		i++;
 	}
+	else
+	{
+		fill_stack(argv, a);
+	}
+	
     return (0);
 }
 
@@ -62,32 +70,21 @@ void sort_three(t_stack *a)
 
 
 	if (big == 1 && small == 2)
-	{
-		rotate(a);
-		write(1, "ra\n", 4);
-	}
+		write_rotate(a, NULL, "ra");
 	else if (big == 1 && small == 3)
 	{
-		swap(a);
-		rev_rotate(a);
-		write(1, "sa\nrra\n", 8);
+		write_swap(a, NULL, "sa");
+		write_revrot(a, NULL, "rra");
 	}
 	else if (big == 2 && small == 1)
 	{
-		swap(a);
-		rotate(a);
-		write(1, "sa\nra\n", 7);
+		write_swap(a, NULL, "sa");
+		write_rotate(a, NULL, "ra");
 	}
 	else if (big == 2 && small == 3)
-	{
-		rev_rotate(a);
-		write(1, "rra\n", 5);
-	}
+		write_revrot(a, NULL, "rra");
 	else
-    {
-        swap(a);
-        printf("sa\n");
-    }
+		write_swap(a, NULL, "sa");
 }
 
 void sort_five(t_stack *a, t_stack *b)
@@ -100,8 +97,14 @@ void sort_five(t_stack *a, t_stack *b)
 	{
 		write_push(a, b, "pb");
 		write_rotate(a, b, "ra");
+		write_push(a, b, "pb");
 	}
-	write_push(a, b, "pb");
+	else
+	{
+		write_push(a, b, "pb");
+		write_push(a, b, "pb");
+		write_rotate(a, b, "ra");
+	}	
 }
 
 void check_case(t_stack *a, t_stack *b)
@@ -109,14 +112,13 @@ void check_case(t_stack *a, t_stack *b)
 	if (!is_sorted(a))
 	{
 		if (a->size == 2)
-		{
-			swap(a);
-			write(1, "sa\n", 3);
-		}
+			write_swap(a, NULL, "sa");
 		else if (a->size == 3)
 			sort_three(a);
-		else if (a->size >= 4 && a->size <= 6)
+		else if (a->size >= 4 && a->size <= 5)
 			sort_five(a, b);
+		else if (a->size >=6 && a->size <= 100)
+			sort_hundred(a, b);
 	}
 }
 
@@ -140,7 +142,7 @@ int main(int argc, char **argv)
 			i++;
 		}
 		check_case(&a, &b);
-    }
+	}
 	   t_list *lst = a.head;
     while (lst)
     {

@@ -5,6 +5,60 @@ void    rm_lst(void *node)
     free(node);
 }
 
+void bubble_sort(char *args, int size)
+{
+    int i;
+    int swapped;
+    int swap;
+
+    swap = 0;
+    swapped = 1;
+    while (swapped)
+    {
+        swapped = 0;
+        i = 0;
+        while (i < size)
+        {
+            if (args[i] > args[i + 1])
+            {
+                swap = args[i];
+                args[i] = args[i + 1];
+                args[i + 1] = swap;
+                swapped = 1;
+            }
+            i++;
+        }
+    }
+}
+
+void sort_num(t_stack *a)
+{
+    t_list *lst;
+    t_list *tmp;
+    t_list *max;
+    int     swapped;
+
+    max = NULL;
+    swapped = 1;
+    while (swapped)
+    {
+        swapped = 0;
+        lst = a->head;
+        while (lst->next != max)
+        {
+            if (*((int *)lst->content) > *((int *)(lst->next)->content))
+            {
+                tmp = lst->content;
+                lst->content = (lst->next)->content;
+                (lst->next)->content = tmp;
+                swapped = 1;
+            }
+            lst = lst->next;
+        }
+        max = lst;
+    }
+}
+
 void 	free_args(char **args)
 {
 	int i;
