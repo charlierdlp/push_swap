@@ -24,7 +24,7 @@ void	fill_stack(char *args, t_stack *a)
 	a->size++;
 }
 
-int parse_args(char *argv, t_stack *a)
+int parse_args(char *argv, t_stack *a, t_stack *copy)
 {
 	int i;
 	int j;
@@ -55,8 +55,8 @@ int parse_args(char *argv, t_stack *a)
 	else
 	{
 		fill_stack(argv, a);
+		fill_stack(argv, copy);
 	}
-	
     return (0);
 }
 
@@ -107,7 +107,7 @@ void sort_five(t_stack *a, t_stack *b)
 	}	
 }
 
-void check_case(t_stack *a, t_stack *b)
+void check_case(t_stack *a, t_stack *b, t_stack *copy)
 {
 	if (!is_sorted(a))
 	{
@@ -118,7 +118,7 @@ void check_case(t_stack *a, t_stack *b)
 		else if (a->size >= 4 && a->size <= 5)
 			sort_five(a, b);
 		else if (a->size >=6 && a->size <= 100)
-			sort_hundred(a, b);
+			sort_hundred(a, b, copy);
 	}
 }
 
@@ -127,22 +127,25 @@ int main(int argc, char **argv)
     int i;
     t_stack a;
     t_stack b;
+	t_stack copy;
 
     i = 1;
     a.head = NULL;
     b.head = NULL;
+	copy.head = NULL;
 	a.size = 0;
 	b.size = 0;
+	copy.size = 0;
     if (argc > 1)
     {
 		while (argv[i])
 		{
-            if (parse_args(argv[i], &a))
+            if (parse_args(argv[i], &a, &copy))
                 return (1);
 			i++;
 		}
-		check_case(&a, &b);
-	}
+		check_case(&a, &b, &copy);
+	}/*
 	   t_list *lst = a.head;
     while (lst)
     {
@@ -154,7 +157,7 @@ int main(int argc, char **argv)
     {
         printf("b:%d\n", *((int *)lst2->content));
         lst2 = lst2->next;
-    }
+    }*/
     ft_lstclear(&a.head, &rm_lst);
     ft_lstclear(&b.head, &rm_lst);
 
