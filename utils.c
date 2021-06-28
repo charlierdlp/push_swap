@@ -5,6 +5,15 @@ void    rm_lst(void *node)
     free(node);
 }
 
+void exit_msg(t_stack *a, t_stack *b)
+{
+    write(2, "Error\n", 6);
+    if (a)
+        ft_lstclear(&a->head, &rm_lst);
+    else
+        ft_lstclear(&b->head, &rm_lst);   
+}
+
 void bubble_sort(char *args, int size)
 {
     int i;

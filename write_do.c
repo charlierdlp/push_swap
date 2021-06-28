@@ -24,12 +24,12 @@ void    write_push(t_stack *a, t_stack *b, char *str)
 {
     if (!ft_strcmp(str, "pa"))
     {
-        push(a, b);
+        push(b, a);
         printf("pa\n");
     }
     else if (!ft_strcmp(str, "pb"))
     {
-        push(b, a);
+        push(a, b);
         printf("pb\n");
     }
 }

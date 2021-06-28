@@ -44,8 +44,8 @@ int parse_args(char *argv, t_stack *a, t_stack *copy)
 			}
 			else
 			{
-				printf("Error\n");
-				free_args(args);
+				exit_msg(a, NULL);
+				free_args(&args[i]);
 				return (1);
 			}
 			free_args(args);
@@ -67,6 +67,8 @@ void sort_three(t_stack *a)
 
 	big = stack_biggest(a);
 	small = stack_smallest(a);
+//	printf("%d\n", big);
+//	printf("%d\n", small);
 
 
 	if (big == 1 && small == 2)
@@ -89,22 +91,25 @@ void sort_three(t_stack *a)
 
 void sort_five(t_stack *a, t_stack *b)
 {
-	while (a->size > 3)
-		write_push(a, b, "pa");
-	if (!is_sorted(a))
-		sort_three(a);
-	if (stack_biggest(b) == 1)
+	while (!is_sorted(a))
 	{
-		write_push(a, b, "pb");
-		write_rotate(a, b, "ra");
-		write_push(a, b, "pb");
-	}
-	else
-	{
-		write_push(a, b, "pb");
-		write_push(a, b, "pb");
-		write_rotate(a, b, "ra");
-	}	
+		while (a->size > 3)
+			write_push(a, b, "pb");
+		if (!is_sorted(a))
+			sort_three(a);
+		if (stack_biggest(b) == 1)
+		{
+			write_push(a, b, "pa");
+			write_rotate(a, b, "ra");
+			write_push(a, b, "pa");
+		}
+		else
+		{
+			write_push(a, b, "pa");
+			write_push(a, b, "pa");
+			write_rotate(a, b, "ra");
+		}
+	}		
 }
 
 void check_case(t_stack *a, t_stack *b, t_stack *copy)
@@ -117,8 +122,10 @@ void check_case(t_stack *a, t_stack *b, t_stack *copy)
 			sort_three(a);
 		else if (a->size >= 4 && a->size <= 5)
 			sort_five(a, b);
-		else if (a->size >=6 && a->size <= 100)
+		else if (a->size >=6 && a->size <= 500)
 			sort_hundred(a, b, copy);
+		else if (a->size == 1 || a->size > 500)
+			exit_msg(a, b);
 	}
 }
 
@@ -157,7 +164,8 @@ int main(int argc, char **argv)
     {
         printf("b:%d\n", *((int *)lst2->content));
         lst2 = lst2->next;
-    }*/
+    }
+	*/
     ft_lstclear(&a.head, &rm_lst);
     ft_lstclear(&b.head, &rm_lst);
 

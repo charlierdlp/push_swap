@@ -1,7 +1,7 @@
 GNL		= gnl/get_next_line.c
 SRCS	= ${GNL} instructions.c push_swap.c utils.c write_do.c radix_sort.c
 OBJS	= ${SRCS:.c=.o}
-NAME	= checker
+NAME	= push_swap
 CC		= gcc
 RM		= rm -f
 CFLAGS	= -Wall -Werror -Wextra

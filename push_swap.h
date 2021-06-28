@@ -40,5 +40,6 @@ void push(t_stack *a, t_stack *b);
 void rotate(t_stack *a);
 void rev_rotate(t_stack *a);
 int is_sorted(t_stack *a);
+void exit_msg(t_stack *a, t_stack *b);
 
 #endif
