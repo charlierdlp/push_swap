@@ -12,16 +12,27 @@
 
 #include "push_swap.h"
 
-void	fill_stack(char *args, t_stack *a)
+int	fill_stack(char *args, t_stack *a)
 {
+	int i;
 	int *num;
 	t_list *node;
 
+	i = 0;
+	if (args[i] == '-' || args[i] == '+')
+		i++;
+	while (args[i])
+	{
+		if (!ft_isdigit(args[i]))
+			return (0);
+		i++;
+	}
 	num = malloc(sizeof(int));
 	num[0] = ft_atoi(args);
 	node = ft_lstnew(num);
 	ft_lstadd_back(&a->head, node);
 	a->size++;
+	return (1);
 }
 
 int parse_args(char *argv, t_stack *a, t_stack *copy)
@@ -46,18 +57,28 @@ int parse_args(char *argv, t_stack *a, t_stack *copy)
 			{
 				exit_msg(a, NULL);
 				free_args(&args[i]);
-				return (1);
+				return (0);
 			}
 			free_args(args);
 			i++;
 		}
 	}
+	else if((argv[i] == '-' && ft_isdigit(argv[i + 1])) || ft_isdigit(argv[i]))
+	{
+		if (!fill_stack(argv, a))
+		{
+			exit_msg(NULL, NULL);
+			return (0);
+		}
+		else
+			fill_stack(argv, copy);
+	}
 	else
 	{
-		fill_stack(argv, a);
-		fill_stack(argv, copy);
+		exit_msg(NULL, NULL);
+		return (0);
 	}
-    return (0);
+    return (1);
 }
 
 void sort_three(t_stack *a)
@@ -147,12 +168,16 @@ int main(int argc, char **argv)
     {
 		while (argv[i])
 		{
-            if (parse_args(argv[i], &a, &copy))
+            if (!parse_args(argv[i], &a, &copy))
                 return (1);
 			i++;
 		}
+		check_duplicate(&a);
 		check_case(&a, &b, &copy);
-	}/*
+	}
+	else
+		exit_msg(NULL, NULL);
+	/*
 	   t_list *lst = a.head;
     while (lst)
     {
@@ -164,8 +189,10 @@ int main(int argc, char **argv)
     {
         printf("b:%d\n", *((int *)lst2->content));
         lst2 = lst2->next;
-    }*/
+    }
     ft_lstclear(&a.head, &rm_lst);
     ft_lstclear(&b.head, &rm_lst);
+	*/
+	//system("leaks push_swap");
 	return (0);
 }

@@ -8,10 +8,34 @@ void    rm_lst(void *node)
 void exit_msg(t_stack *a, t_stack *b)
 {
     write(2, "Error\n", 6);
-    if (a)
+
+    if (a || b)
+    {
         ft_lstclear(&a->head, &rm_lst);
-    else
-        ft_lstclear(&b->head, &rm_lst);   
+        ft_lstclear(&b->head, &rm_lst);
+    }
+}
+
+void check_duplicate(t_stack *a)
+{
+    t_list *tmp1;
+    t_list *tmp2;
+
+    tmp1 = a->head;
+    while (tmp1)
+    {
+        tmp2 = tmp1->next;
+        while (tmp2)
+        {
+            if (*((int *)tmp1->content) == *((int *)tmp2->content))
+            {
+                exit_msg(NULL, NULL);
+                exit(EXIT_FAILURE);
+            }
+            tmp2 = tmp2->next;
+        }
+        tmp1 = tmp1->next;
+    }
 }
 
 void bubble_sort(char *args, int size)
