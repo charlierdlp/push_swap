@@ -26,7 +26,7 @@ void swap(t_stack *stack)
 
 void push(t_stack *a, t_stack *b)
 {
-    if (a->head)
+    if (a->size > 0)
     {
         t_list *tmp;
     

@@ -38,24 +38,21 @@ void sort_hundred(t_stack *a, t_stack *b, t_stack *copy)
     int size;
 
     i = 0;
-    j = 1;
+    j = 0;
     size = a->size;
     max_bits = 0;
     max_num = size - 1;
-    lstb = b->head;
 
     while ((max_num >> max_bits) != 0)
         ++max_bits;
     sort_num(copy);
     simplify_negative(a, copy);
+
     while (i < max_bits)
     {
-        lsta = a->head;
         j = 0;
         while (j < size)
         {
-            //printf("num:%d\n", *((int *)(a->head)->content));
-            //printf("i:%d\n", i);
             num = *((int *)(a->head)->content);
             if (((num >> i) & 1) == 1)
                 write_rotate(a, NULL, "ra");
@@ -63,19 +60,8 @@ void sort_hundred(t_stack *a, t_stack *b, t_stack *copy)
                 write_push(a, b, "pb");
             j++;
         }
-        lstb = b->head;
-        while (lstb->next != NULL)
-        {
+        while (b->head)
             write_push(a, b, "pa");
-            lstb = lstb->next;
-        }
         i++;
     }
-    /*
-        lsta = a->head;
-    while (lsta)
-    {
-        printf("a:%d\n", *((int *)lsta->content));
-        lsta = lsta->next;
-    }*/
 }

@@ -164,10 +164,8 @@ int main(int argc, char **argv)
     {
         printf("b:%d\n", *((int *)lst2->content));
         lst2 = lst2->next;
-    }
-	*/
+    }*/
     ft_lstclear(&a.head, &rm_lst);
     ft_lstclear(&b.head, &rm_lst);
-
 	return (0);
 }
