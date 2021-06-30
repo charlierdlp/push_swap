@@ -88,8 +88,8 @@ void sort_three(t_stack *a)
 
 	big = stack_biggest(a);
 	small = stack_smallest(a);
-//	printf("%d\n", big);
-//	printf("%d\n", small);
+	//printf("%d\n", big);
+	//printf("%d\n", small);
 
 
 	if (big == 1 && small == 2)
@@ -175,8 +175,6 @@ int main(int argc, char **argv)
 		check_duplicate(&a);
 		check_case(&a, &b, &copy);
 	}
-	else
-		exit_msg(NULL, NULL);
 	/*
 	   t_list *lst = a.head;
     while (lst)
