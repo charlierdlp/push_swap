@@ -103,6 +103,8 @@ void sort_three(t_stack *a)
 	{
 		write_swap(a, NULL, "sa");
 		write_rotate(a, NULL, "ra");
+		if (!is_sorted(a))
+			write_swap(a, NULL, "sa");
 	}
 	else if (big == 2 && small == 3)
 		write_revrot(a, NULL, "rra");
@@ -118,7 +120,7 @@ void sort_five(t_stack *a, t_stack *b)
 			write_push(a, b, "pb");
 		if (!is_sorted(a))
 			sort_three(a);
-		if (stack_biggest(b) == 1)
+		if (stack_biggest(b) == 1 )
 		{
 			write_push(a, b, "pa");
 			write_rotate(a, b, "ra");
@@ -141,7 +143,9 @@ void check_case(t_stack *a, t_stack *b, t_stack *copy)
 			write_swap(a, NULL, "sa");
 		else if (a->size == 3)
 			sort_three(a);
-		else if (a->size >= 4 && a->size <= 5)
+		else if (a->size == 4)
+			sort_hundred(a, b, copy);
+		else if (a->size == 5)
 			sort_five(a, b);
 		else if (a->size >=6 && a->size <= 500)
 			sort_hundred(a, b, copy);
