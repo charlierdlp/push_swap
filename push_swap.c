@@ -28,6 +28,8 @@ int	fill_stack(char *args, t_stack *a)
 		i++;
 	}
 	num = malloc(sizeof(int));
+	if (ft_atol(args) > 2147483647 || ft_atol(args) < -2147483648)
+		return (0);
 	num[0] = ft_atoi(args);
 	node = ft_lstnew(num);
 	ft_lstadd_back(&a->head, node);
@@ -70,8 +72,6 @@ int parse_args(char *argv, t_stack *a, t_stack *copy)
 			exit_msg(NULL, NULL);
 			return (0);
 		}
-		else
-			fill_stack(argv, copy);
 	}
 	else
 	{
