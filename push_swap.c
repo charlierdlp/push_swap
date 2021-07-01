@@ -114,12 +114,16 @@ void sort_three(t_stack *a)
 
 void sort_five(t_stack *a, t_stack *b)
 {
-	while (!is_sorted(a))
+	if (!is_sorted(a))
 	{
 		while (a->size > 3)
 			write_push(a, b, "pb");
 		if (!is_sorted(a))
 			sort_three(a);
+		write_push(a, b, "pa");
+		write_push(a, b, "pa");
+		insertion_sort(a, b);
+			/*
 		if (stack_biggest(b) == 1 )
 		{
 			write_push(a, b, "pa");
@@ -132,6 +136,7 @@ void sort_five(t_stack *a, t_stack *b)
 			write_push(a, b, "pa");
 			write_rotate(a, b, "ra");
 		}
+		*/
 	}		
 }
 
@@ -144,9 +149,9 @@ void check_case(t_stack *a, t_stack *b, t_stack *copy)
 		else if (a->size == 3)
 			sort_three(a);
 		else if (a->size == 4)
-			sort_hundred(a, b, copy);
+			insertion_sort(a, b);
 		else if (a->size == 5)
-			sort_five(a, b);
+			insertion_sort(a, b);
 		else if (a->size >=6 && a->size <= 500)
 			sort_hundred(a, b, copy);
 		else if (a->size == 1 || a->size > 500)
@@ -168,7 +173,8 @@ int main(int argc, char **argv)
 	a.size = 0;
 	b.size = 0;
 	copy.size = 0;
-    if (argc > 1)
+
+    if (argc >= 2)
     {
 		while (argv[i])
 		{
@@ -179,6 +185,8 @@ int main(int argc, char **argv)
 		check_duplicate(&a);
 		check_case(&a, &b, &copy);
 	}
+	else if (argc != 1)
+		exit_msg(NULL, NULL);
 	/*
 	   t_list *lst = a.head;
     while (lst)

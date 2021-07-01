@@ -25,6 +25,7 @@ typedef struct s_stack
 }              t_stack;
 
 void sort_num(t_stack *a);
+void insertion_sort(t_stack *a, t_stack *b);
 void sort_hundred(t_stack *a, t_stack *b, t_stack *copy);
 void bubble_sort(char *args, int size);
 int     stack_biggest(t_stack *a);
