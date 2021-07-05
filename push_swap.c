@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 20:17:06 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/06/03 20:32:54 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/07/05 20:13:04 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	fill_stack(char *args, t_stack *a)
 {
-	int i;
-	int *num;
-	t_list *node;
+	int		i;
+	int		*num;
+	t_list	*node;
 
 	i = 0;
 	if (args[i] == '-' || args[i] == '+')
@@ -37,11 +37,11 @@ int	fill_stack(char *args, t_stack *a)
 	return (1);
 }
 
-int parse_args(char *argv, t_stack *a, t_stack *copy)
+int	parse_args(char *argv, t_stack *a, t_stack *copy)
 {
-	int i;
-	int j;
-	char **args;
+	int		i;
+	int		j;
+	char	**args;
 
 	i = 0;
 	if (ft_strchr(argv, ' '))
@@ -50,7 +50,8 @@ int parse_args(char *argv, t_stack *a, t_stack *copy)
 		while (args[i])
 		{
 			j = 0;
-			if ((args[i][j] == '-' && ft_isdigit(args[i][j + 1])) || ft_isdigit(args[i][j]))
+			if ((args[i][j] == '-' && ft_isdigit(args[i][j + 1]))
+				|| ft_isdigit(args[i][j]))
 			{
 				fill_stack(args[i], a);
 				j++;
@@ -65,7 +66,7 @@ int parse_args(char *argv, t_stack *a, t_stack *copy)
 			i++;
 		}
 	}
-	else if((argv[i] == '-' && ft_isdigit(argv[i + 1])) || ft_isdigit(argv[i]))
+	else if ((argv[i] == '-' && ft_isdigit(argv[i + 1])) || ft_isdigit(argv[i]))
 	{
 		if (!fill_stack(argv, a))
 		{
@@ -78,20 +79,16 @@ int parse_args(char *argv, t_stack *a, t_stack *copy)
 		exit_msg(NULL, NULL);
 		return (0);
 	}
-    return (1);
+	return (1);
 }
 
-void sort_three(t_stack *a)
+void	sort_three(t_stack *a)
 {
-	int big;
-	int small;
+	int	big;
+	int	small;
 
 	big = stack_biggest(a);
 	small = stack_smallest(a);
-	//printf("%d\n", big);
-	//printf("%d\n", small);
-
-
 	if (big == 1 && small == 2)
 		write_rotate(a, NULL, "ra");
 	else if (big == 1 && small == 3)
@@ -112,7 +109,7 @@ void sort_three(t_stack *a)
 		write_swap(a, NULL, "sa");
 }
 
-void sort_five(t_stack *a, t_stack *b)
+void	sort_five(t_stack *a, t_stack *b)
 {
 	if (!is_sorted(a))
 	{
@@ -140,7 +137,7 @@ void sort_five(t_stack *a, t_stack *b)
 	}		
 }
 
-void check_case(t_stack *a, t_stack *b, t_stack *copy)
+void	check_case(t_stack *a, t_stack *b, t_stack *copy)
 {
 	if (!is_sorted(a))
 	{
@@ -152,34 +149,33 @@ void check_case(t_stack *a, t_stack *b, t_stack *copy)
 			insertion_sort(a, b);
 		else if (a->size == 5)
 			insertion_sort(a, b);
-		else if (a->size >=6 && a->size <= 500)
+		else if (a->size >= 6 && a->size <= 500)
 			sort_hundred(a, b, copy);
 		else if (a->size == 1 || a->size > 500)
 			exit_msg(a, b);
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    int i;
-    t_stack a;
-    t_stack b;
-	t_stack copy;
+	int		i;
+	t_stack	a;
+	t_stack	b;
+	t_stack	copy;
 
-    i = 1;
-    a.head = NULL;
-    b.head = NULL;
+	i = 1;
+	a.head = NULL;
+	b.head = NULL;
 	copy.head = NULL;
 	a.size = 0;
 	b.size = 0;
 	copy.size = 0;
-
-    if (argc >= 2)
-    {
+	if (argc >= 2)
+	{
 		while (argv[i])
 		{
-            if (!parse_args(argv[i], &a, &copy))
-                return (1);
+			if (!parse_args(argv[i], &a, &copy))
+				return (1);
 			i++;
 		}
 		check_duplicate(&a);
