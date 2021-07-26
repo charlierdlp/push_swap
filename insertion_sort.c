@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 20:04:57 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/07/05 20:07:43 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/07/26 13:23:16 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	back(t_stack *a, t_stack *b, int pos)
 }
 
 void	insertion_sort(t_stack *a, t_stack *b)
-	{
+{
 	int		small;
 	int		i;
 	int		pos;
