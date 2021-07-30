@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 20:04:57 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/07/26 13:23:16 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/07/30 13:09:15 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,18 @@ void	insertion_sort(t_stack *a, t_stack *b)
 
 	while (a->head)
 	{
-		i = 0;
-		pos = 0;
+		i = (pos += 0); // abello
 		tmp = a->head;
 		small = *((int *)tmp->content);
 		while (tmp->next)
 		{
 			tmp = tmp->next;
 			++i;
-			if (*((int *)tmp->content) < small && (pos = i))
+			if (*((int *)tmp->content) < small)
+			{
+				pos = i;
 				small = *((int *)tmp->content);
+			}
 		}
 		if (pos <= a->size / 2)
 			front(a, b, pos);
