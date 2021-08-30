@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:09:14 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/07/26 13:27:17 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/08/30 19:36:11 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	parse_args(char *argv, t_stack *a, t_stack *copy)
 			exit_msg(NULL, NULL);
 			return (0);
 		}
+		else
+			fill_stack(argv, copy);
 	}
 	else
 	{

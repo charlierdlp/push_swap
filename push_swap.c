@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 20:17:06 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/07/26 13:18:20 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/08/30 19:45:41 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,6 @@ void	sort_five(t_stack *a, t_stack *b)
 		write_push(a, b, "pa");
 		write_push(a, b, "pa");
 		insertion_sort(a, b);
-			/*
-		if (stack_biggest(b) == 1 )
-		{
-			write_push(a, b, "pa");
-			write_rotate(a, b, "ra");
-			write_push(a, b, "pa");
-		}
-		else
-		{
-			write_push(a, b, "pa");
-			write_push(a, b, "pa");
-			write_rotate(a, b, "ra");
-		}
-		*/
 	}		
 }
 

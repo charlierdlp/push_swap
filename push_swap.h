@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:16:21 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/07/05 20:14:36 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/08/30 18:47:01 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	sort_hundred(t_stack *a, t_stack *b, t_stack *copy);
 void	bubble_sort(char *args, int size);
 int		stack_biggest(t_stack *a);
 int		stack_smallest(t_stack *a);
+int		parse_args(char *argv, t_stack *a, t_stack *copy);
 void	write_swap(t_stack *a, t_stack *b, char *str);
 void	write_push(t_stack *a, t_stack *b, char *str);
 void	write_rotate(t_stack *a, t_stack *b, char *str);
