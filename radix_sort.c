@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:52:36 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/07 14:17:57 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/07 18:28:35 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,38 +68,29 @@ void	simplify_negative(t_stack *a, t_stack *copy)
 
 void	sort_hundred(t_stack *a, t_stack *b, t_stack *copy)
 {
-	t_list	*lsta;
-	t_list	*lstb;
-	int		i;
-	int		j;
-	int		max_num;
-	int		max_bits;
-	int		num;
-	int		size;
+	t_sort	sort;
 
-	i = 0;
-	j = 0;
-	size = a->size;
-	max_bits = 0;
-	max_num = size - 1;
-	while ((max_num >> max_bits) != 0)
-		++max_bits;
+	sort.i = -1;
+	sort.size = a->size;
+	sort.max_bits = 0;
+	sort.max_num = sort.size - 1;
+	while ((sort.max_num >> sort.max_bits) != 0)
+		++sort.max_bits;
 	sort_num(copy);
 	simplify_negative(a, copy);
-	while (i < max_bits)
+	while (++sort.i < sort.max_bits)
 	{
-		j = 0;
-		while (j < size)
+		sort.j = 0;
+		while (sort.j < sort.size)
 		{
-			num = *((int *)(a->head)->content);
-			if (((num >> i) & 1) == 1)
+			sort.num = *((int *)(a->head)->content);
+			if (((sort.num >> sort.i) & 1) == 1)
 				write_rotate(a, NULL, "ra");
 			else
 				write_push(a, b, "pb");
-			j++;
+			sort.j++;
 		}
 		while (b->head)
 			write_push(a, b, "pa");
-		i++;
 	}
 }

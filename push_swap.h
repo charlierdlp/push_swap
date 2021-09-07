@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:16:21 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/08/30 18:47:01 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/07 18:27:23 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@
 # include <unistd.h>
 # include "libft/libft.h"
 # include "gnl/get_next_line.h"
+
+typedef struct s_sort
+{
+	int			i;
+	int			j;
+	int			max_num;
+	int			max_bits;
+	int			num;
+	int			size;
+}				t_sort;
 
 typedef struct s_stack
 {
