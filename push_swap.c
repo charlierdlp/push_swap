@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 20:17:06 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/06 13:20:58 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/07 14:26:00 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,7 @@ void	check_case(t_stack *a, t_stack *b, t_stack *copy)
 			write_swap(a, NULL, "sa");
 		else if (a->size == 3)
 			sort_three(a);
-		else if (a->size == 4)
-			insertion_sort(a, b);
-		else if (a->size == 5)
+		else if (a->size == 4 || a->size == 5)
 			insertion_sort(a, b);
 		else if (a->size >= 6 && a->size <= 500)
 			sort_hundred(a, b, copy);
