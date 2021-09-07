@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:09:14 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/08/30 19:36:11 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:06:32 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,37 @@ int	fill_stack(char *args, t_stack *a)
 	a->size++;
 	return (1);
 }
+/*
+int check_args(char *argv, t_stack *a)
+{
+	int		i;
+	int		j;
+	char	**args;
 
+	i = 0;
+	args = ft_split(argv, ' ');
+	while (args[i])
+	{
+		j = 0;
+		if ((args[i][j] == '-' && ft_isdigit(args[i][j + 1]))
+			|| ft_isdigit(args[i][j]))
+		{
+			fill_stack(args[i], a);
+			j++;
+		}
+		else
+		{
+		printf("hola\n");
+			exit_msg(a, NULL);
+			free_args(&args[i]);
+			return (0);
+		}
+		free_args(args);
+		i++;
+	}
+	return (1);
+}
+*/
 int	parse_args(char *argv, t_stack *a, t_stack *copy)
 {
 	int		i;
@@ -46,6 +76,9 @@ int	parse_args(char *argv, t_stack *a, t_stack *copy)
 	i = 0;
 	if (ft_strchr(argv, ' '))
 	{	
+		/*
+		if(!check_args(argv, a))
+			return (0);*/
 		args = ft_split(argv, ' ');
 		while (args[i])
 		{

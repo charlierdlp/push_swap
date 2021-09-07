@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 20:17:06 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/08/30 19:45:41 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/06 13:20:58 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 	t_stack	copy;
 
 	i = 1;
-	if (argc >= 2)
+	if (argc >= 1)
 	{
 		init_stacks(&a, &b, &copy);
 		while (argv[i])
