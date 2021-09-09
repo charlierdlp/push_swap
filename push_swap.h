@@ -53,6 +53,6 @@ void	rotate(t_stack *a);
 void	rev_rotate(t_stack *a);
 int		is_sorted(t_stack *a);
 void	check_duplicate(t_stack *a);
-void	exit_msg(t_stack *a, t_stack *b);
+void	exit_msg(t_stack *a, t_stack *b, t_stack *copy);
 
 #endif

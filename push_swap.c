@@ -76,7 +76,7 @@ void	check_case(t_stack *a, t_stack *b, t_stack *copy)
 		else if (a->size >= 6 && a->size <= 500)
 			sort_hundred(a, b, copy);
 		else if (a->size == 1 || a->size > 500)
-			exit_msg(a, b);
+			exit_msg(a, b, copy);
 	}
 }
 
@@ -101,6 +101,6 @@ int	main(int argc, char **argv)
 		check_case(&a, &b, &copy);
 	}
 	else if (argc != 1)
-		exit_msg(NULL, NULL);
+		exit_msg(NULL, NULL, NULL);
 	return (0);
 }

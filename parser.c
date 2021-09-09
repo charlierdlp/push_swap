@@ -37,30 +37,48 @@ int	fill_stack(char *args, t_stack *a)
 	return (1);
 }
 
+int	check_num(char *str)
+{
+	int i;
+
+	i = 0;
+
+	while (str[i])
+	{
+		printf("%s\n", str);
+		if (str[i] != '-' && !ft_isdigit(str[i]))
+			return (0);
+		if ((ft_strlen(str) == 1 && str[i] == '-') || (i != 0 && str[i] == '-'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	check_args(char *argv, t_stack *a, t_stack *copy)
 {
 	int		i;
-	int		j;
 	char	**args;
 
-	i = -1;
+	i = 0;
 	args = ft_split(argv, ' ');
-	while (args[++i])
+	while (args[i])
 	{
-		j = 0;
-		if ((args[i][j] == '-' && ft_isdigit(args[i][j + 1]))
-			|| ft_isdigit(args[i][j]))
+		if (check_num(args[i]))
 		{
+			printf("%s\n", args[i]);
 			fill_stack(args[i], a);
 			fill_stack(args[i], copy);
-			j++;
 		}
 		else
 		{
-			exit_msg(a, NULL);
+			printf("esto3\n");
+			exit_msg(a, NULL, copy);
+			printf("ja\n");
 			free_args(&args[i]);
 			return (0);
 		}
+		i++;
 	}
 	free_args(args);
 	return (1);
@@ -76,11 +94,12 @@ int	parse_args(char *argv, t_stack *a, t_stack *copy)
 		if (!check_args(argv, a, copy))
 			return (0);
 	}
-	else if ((argv[i] == '-' && ft_isdigit(argv[i + 1])) || ft_isdigit(argv[i]))
+	else if (check_num(argv) == 1)
 	{
 		if (!fill_stack(argv, a))
 		{
-			exit_msg(NULL, NULL);
+			printf("esto2\n");
+			exit_msg(NULL, NULL, NULL);
 			return (0);
 		}
 		else
@@ -88,7 +107,8 @@ int	parse_args(char *argv, t_stack *a, t_stack *copy)
 	}
 	else
 	{
-		exit_msg(NULL, NULL);
+		printf("esto\n");
+		exit_msg(a, NULL, copy);
 		return (0);
 	}
 	return (1);
@@ -107,7 +127,7 @@ void	check_duplicate(t_stack *a)
 		{
 			if (*((int *)tmp1->content) == *((int *)tmp2->content))
 			{
-				exit_msg(NULL, NULL);
+				exit_msg(NULL, NULL, NULL);
 				exit(EXIT_FAILURE);
 			}
 			tmp2 = tmp2->next;

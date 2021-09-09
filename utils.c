@@ -17,14 +17,15 @@ void	rm_lst(void *node)
 	free(node);
 }
 
-void	exit_msg(t_stack *a, t_stack *b)
+void	exit_msg(t_stack *a, t_stack *b, t_stack *copy)
 {
-	write(2, "Error\n", 6);
-	if (a || b)
-	{
+	//if (a || b || copy)
+	//{
 		ft_lstclear(&a->head, &rm_lst);
 		ft_lstclear(&b->head, &rm_lst);
-	}
+		ft_lstclear(&copy->head, &rm_lst);
+	//}
+	write(2, "Error\n", 6);
 }
 
 void	free_args(char **args)
