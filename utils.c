@@ -19,13 +19,13 @@ void	rm_lst(void *node)
 
 void	exit_msg(t_stack *a, t_stack *b, t_stack *copy)
 {
-	//if (a || b || copy)
-	//{
-		ft_lstclear(&a->head, &rm_lst);
-		ft_lstclear(&b->head, &rm_lst);
-		ft_lstclear(&copy->head, &rm_lst);
-	//}
 	write(2, "Error\n", 6);
+	if (a)
+		ft_lstclear(&a->head, &rm_lst);
+	if (b)
+		ft_lstclear(&b->head, &rm_lst);
+	if (copy)
+		ft_lstclear(&copy->head, &rm_lst);
 }
 
 void	free_args(char **args)
@@ -38,7 +38,8 @@ void	free_args(char **args)
 		free(args[i]);
 		i++;
 	}
-	free(args);
+	if (args)
+		free(args);
 }
 
 int	stack_biggest(t_stack *a)
