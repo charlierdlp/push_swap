@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 20:17:06 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/07 14:26:00 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/21 20:40:57 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	sort_three(t_stack *a)
 		write_swap(a, NULL, "sa");
 }
 
+/*
 void	sort_five(t_stack *a, t_stack *b)
 {
 	if (!is_sorted(a))
@@ -62,6 +63,50 @@ void	sort_five(t_stack *a, t_stack *b)
 		insertion_sort(a, b);
 	}		
 }
+*/
+
+void move_smallest(t_stack *a, t_stack *b, int small)
+{
+	if (small == 1)
+		write_push(a, b, "pb");
+	else if (small == 2)
+	{
+		write_rotate(a, NULL, "ra");
+		write_push(a, b, "pb");
+	}
+	else if (small == 3)
+	{
+		write_rotate(a, NULL, "ra");
+		write_rotate(a, NULL, "ra");
+		write_push(a, b, "pb");
+	}
+	else if (small == 4)
+	{
+		if (a->size == 5)
+			write_revrot(a, NULL, "rra");
+		write_revrot(a, NULL, "rra");
+		write_push(a, b, "pb");
+	}
+	else
+	{
+		write_revrot(a, NULL, "rra");
+		write_push(a, b, "pb");
+	}
+}
+
+void	sort_five(t_stack *a, t_stack *b)
+{
+	int	small;
+
+	small = stack_smallest(a);
+	move_smallest(a, b, small);
+	small = stack_smallest(a);
+	move_smallest(a, b, small);
+	if (!is_sorted(a))
+		sort_three(a);
+	write_push(a, b, "pa");
+	write_push(a, b, "pa");
+}
 
 void	check_case(t_stack *a, t_stack *b, t_stack *copy)
 {
@@ -72,7 +117,7 @@ void	check_case(t_stack *a, t_stack *b, t_stack *copy)
 		else if (a->size == 3)
 			sort_three(a);
 		else if (a->size == 4 || a->size == 5)
-			insertion_sort(a, b);
+			sort_five(a, b);
 		else if (a->size >= 6 && a->size <= 500)
 			sort_hundred(a, b, copy);
 		else if (a->size == 1 || a->size > 500)

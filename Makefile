@@ -7,12 +7,12 @@ RM		= rm -f
 CFLAGS	= -Wall -Werror -Wextra
 SANITIZE = -g -fsanitize=address
 %.o: %.c
-	${CC} -g3 -c $< -o $@
+	${CC} -g -c $< -o $@
 
 ${NAME}:	${OBJS}
 				make bonus -C libft/
 				cp libft/libft.a ${NAME}
-				${CC} -g3 -L libft/ -lft $^ -o ${NAME}
+				${CC} -g -L libft/ -lft $^ -o ${NAME}
 
 all:		${NAME}
 

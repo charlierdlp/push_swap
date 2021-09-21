@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 18:45:14 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/08/30 18:45:17 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/21 20:40:52 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	exit_msg(t_stack *a, t_stack *b, t_stack *copy)
 		ft_lstclear(&b->head, &rm_lst);
 	if (copy)
 		ft_lstclear(&copy->head, &rm_lst);
+	
 }
 
 void	free_args(char **args)
