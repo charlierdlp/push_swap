@@ -3,11 +3,11 @@ SRCS_B	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.
 OBJS	= ${SRCS:.c=.o}
 OBJS_B	= ${SRCS_B:.c=.o}
 NAME	= libft.a
-CC		= cc
+CC		= gcc
 RM		= rm -f
 CFLAGS	= -Wall -Werror -Wextra
 .c.o:
-		${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 ${NAME}:	${OBJS}
 			ar rc  ${NAME} ${OBJS}
 			ranlib ${NAME}

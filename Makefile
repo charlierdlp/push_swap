@@ -7,7 +7,7 @@ RM		= rm -f
 CFLAGS	= -Wall -Werror -Wextra
 SANITIZE = -g -fsanitize=address
 %.o: %.c
-	${CC} -g -c $< -o $@
+	${CC} ${CFLAGS} -g -c $< -o $@
 
 ${NAME}:	${OBJS}
 				make bonus -C libft/
