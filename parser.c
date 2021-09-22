@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:09:14 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/07 14:25:12 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:01:32 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,9 @@ int	fill_stack(char *args, t_stack *a)
 
 int	check_num(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-
 	while (str[i])
 	{
 		if (str[i] != '-' && !ft_isdigit(str[i]))
@@ -71,7 +70,6 @@ int	check_args(char *argv, t_stack *a, t_stack *copy)
 		else
 		{
 			exit_msg(a, NULL, copy);
-			//free_args(&args[i]);
 			return (0);
 		}
 		i++;
@@ -128,24 +126,4 @@ void	check_duplicate(t_stack *a)
 		}
 		tmp1 = tmp1->next;
 	}
-}
-
-int	is_sorted(t_stack *a)
-{
-	t_list	*lst;
-	int		*prev;
-
-	if (a->head)
-	{
-		prev = a->head->content;
-		lst = a->head->next;
-		while (lst)
-		{
-			if (*((int *)prev) > *((int *)lst->content))
-				return (0);
-			prev = lst->content;
-			lst = lst->next;
-		}
-	}
-	return (1);
 }

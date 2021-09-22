@@ -6,21 +6,11 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 20:17:06 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/21 20:40:57 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:57:41 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	init_stacks(t_stack *a, t_stack *b, t_stack *copy)
-{
-	a->head = NULL;
-	b->head = NULL;
-	copy->head = NULL;
-	a->size = 0;
-	b->size = 0;
-	copy->size = 0;
-}
 
 void	sort_three(t_stack *a)
 {
@@ -49,23 +39,7 @@ void	sort_three(t_stack *a)
 		write_swap(a, NULL, "sa");
 }
 
-/*
-void	sort_five(t_stack *a, t_stack *b)
-{
-	if (!is_sorted(a))
-	{
-		while (a->size > 3)
-			write_push(a, b, "pb");
-		if (!is_sorted(a))
-			sort_three(a);
-		write_push(a, b, "pa");
-		write_push(a, b, "pa");
-		insertion_sort(a, b);
-	}		
-}
-*/
-
-void move_smallest(t_stack *a, t_stack *b, int small)
+void	move_smallest(t_stack *a, t_stack *b, int small)
 {
 	if (small == 1)
 		write_push(a, b, "pb");

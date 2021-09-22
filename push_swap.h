@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:16:21 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/07 18:27:23 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:37:36 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ typedef struct s_stack
 	int		size;
 }				t_stack;
 
+void	init_stacks(t_stack *a, t_stack *b, t_stack *copy);
 void	sort_num(t_stack *a);
-void	insertion_sort(t_stack *a, t_stack *b);
 void	sort_hundred(t_stack *a, t_stack *b, t_stack *copy);
-void	bubble_sort(char *args, int size);
 int		stack_biggest(t_stack *a);
 int		stack_smallest(t_stack *a);
 int		parse_args(char *argv, t_stack *a, t_stack *copy);

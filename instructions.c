@@ -6,11 +6,21 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 19:52:37 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/07/05 20:04:18 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:57:51 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	init_stacks(t_stack *a, t_stack *b, t_stack *copy)
+{
+	a->head = NULL;
+	b->head = NULL;
+	copy->head = NULL;
+	a->size = 0;
+	b->size = 0;
+	copy->size = 0;
+}
 
 void	swap(t_stack *stack)
 {

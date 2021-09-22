@@ -6,11 +6,31 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:52:36 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/07 18:28:35 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:01:15 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sorted(t_stack *a)
+{
+	t_list	*lst;
+	int		*prev;
+
+	if (a->head)
+	{
+		prev = a->head->content;
+		lst = a->head->next;
+		while (lst)
+		{
+			if (*((int *)prev) > *((int *)lst->content))
+				return (0);
+			prev = lst->content;
+			lst = lst->next;
+		}
+	}
+	return (1);
+}
 
 void	sort_num(t_stack *a)
 {
