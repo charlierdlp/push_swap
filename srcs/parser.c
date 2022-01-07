@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:09:14 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/22 18:01:32 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:52:37 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_args(char *argv, t_stack *a, t_stack *copy)
 		}
 		else
 		{
-			exit_msg(a, NULL, copy);
+			exit_msg(a, NULL, copy, 1);
 			return (0);
 		}
 		i++;
@@ -92,7 +92,7 @@ int	parse_args(char *argv, t_stack *a, t_stack *copy)
 	{
 		if (!fill_stack(argv, a))
 		{
-			exit_msg(NULL, NULL, NULL);
+			exit_msg(NULL, NULL, NULL, 1);
 			return (0);
 		}
 		else
@@ -100,7 +100,7 @@ int	parse_args(char *argv, t_stack *a, t_stack *copy)
 	}
 	else
 	{
-		exit_msg(a, NULL, copy);
+		exit_msg(a, NULL, copy, 1);
 		return (0);
 	}
 	return (1);
@@ -119,7 +119,7 @@ void	check_duplicate(t_stack *a)
 		{
 			if (*((int *)tmp1->content) == *((int *)tmp2->content))
 			{	
-				exit_msg(NULL, NULL, NULL);
+				exit_msg(NULL, NULL, NULL, 1);
 				exit(EXIT_FAILURE);
 			}
 			tmp2 = tmp2->next;

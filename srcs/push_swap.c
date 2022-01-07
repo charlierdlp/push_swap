@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 20:17:06 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/22 17:57:41 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:55:19 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	check_case(t_stack *a, t_stack *b, t_stack *copy)
 		else if (a->size >= 6 && a->size <= 500)
 			sort_hundred(a, b, copy);
 		else if (a->size == 1 || a->size > 500)
-			exit_msg(a, b, copy);
+			exit_msg(a, b, copy, 1);
 	}
 }
 
@@ -118,8 +118,9 @@ int	main(int argc, char **argv)
 		}
 		check_duplicate(&a);
 		check_case(&a, &b, &copy);
+		exit_msg(&a, &b, &copy, 0);
 	}
 	else if (argc != 1)
-		exit_msg(NULL, NULL, NULL);
+		exit_msg(NULL, NULL, NULL, 1);
 	return (0);
 }

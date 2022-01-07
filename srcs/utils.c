@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 18:45:14 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/22 17:42:34 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:54:55 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	rm_lst(void *node)
 	free(node);
 }
 
-void	exit_msg(t_stack *a, t_stack *b, t_stack *copy)
+void	exit_msg(t_stack *a, t_stack *b, t_stack *copy, int error)
 {
-	write(2, "Error\n", 6);
+	if (error)
+		write(2, "Error\n", 6);
 	if (a)
 		ft_lstclear(&a->head, &rm_lst);
 	if (b)

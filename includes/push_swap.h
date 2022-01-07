@@ -6,7 +6,7 @@
 /*   By: cruiz-de <cruiz-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:16:21 by cruiz-de          #+#    #+#             */
-/*   Updated: 2021/09/22 18:37:36 by cruiz-de         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:51:54 by cruiz-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	rotate(t_stack *a);
 void	rev_rotate(t_stack *a);
 int		is_sorted(t_stack *a);
 void	check_duplicate(t_stack *a);
-void	exit_msg(t_stack *a, t_stack *b, t_stack *copy);
+void	exit_msg(t_stack *a, t_stack *b, t_stack *copy, int error);
 
 #endif
